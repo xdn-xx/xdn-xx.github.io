@@ -3,17 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
-    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+    <loc>/2020/12/23/2020-12-22note/</loc>
+    <lastmod>2020-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2020/12/21/firstday/</loc>
-    <lastmod>2020-12-21T00:00:00+00:00</lastmod>
+    <loc>/2020/12/23/2020-12/</loc>
+    <lastmod>2020-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-12-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2020-12-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2020/12/21/firstday/</loc>
     <lastmod>2020-12-21T00:00:00+00:00</lastmod>
   </url>
   

@@ -6,7 +6,26 @@
     <description>Recent content in Posts on A Hugo website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2020-12-22</title>
+      <link>/2020/12/23/2020-12-22note/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/23/2020-12-22note/</guid>
+      <description>下载数据download.file(&amp;quot;https://pzhao.org/data/birdflu.xls/&amp;quot;,&amp;quot;birdflu2.xls&amp;quot;)将该数据读入 Rflucase &amp;lt;- read.csv(&amp;quot;D:/studyr/workpath/Rtraining/birdflu_case.csv&amp;quot;)数据行列分别为多少dim(flucase)## [1] 15 7r1 &amp;lt;- dim(flucase)[1]r2 &amp;lt;- dim(flucase)[2]r1## [1] 15r2## [1] 7这个数据表有15行，有7列
+各列的列名称是什么？数据结构是什么？cn &amp;lt;- colnames(flucase)for(i in 1:7){a=class(flucase[,i])print(paste0(&amp;quot;第&amp;quot;,i,&amp;quot;列&amp;quot;,as.character(a)))}## [1] &amp;quot;第1列character&amp;quot;## [1] &amp;quot;第2列integer&amp;quot;## [1] &amp;quot;第3列integer&amp;quot;## [1] &amp;quot;第4列integer&amp;quot;## [1] &amp;quot;第5列integer&amp;quot;## [1] &amp;quot;第6列integer&amp;quot;## [1] &amp;quot;第7列integer&amp;quot;列名为country, X2003, X2004, X2005, X2006, X2007, X2008，数据结构是data.frame</description>
+    </item>
+    
+    <item>
+      <title>2020-12-22</title>
+      <link>/2020/12/23/2020-12/</link>
+      <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/23/2020-12/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>first</title>
       <link>/2020/12/21/firstday/</link>
