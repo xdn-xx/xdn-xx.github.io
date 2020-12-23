@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.1" />
+
+
+<title>2020-12-22note2 - A Hugo website</title>
+<meta property="og:title" content="2020-12-22note2 - A Hugo website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">2020-12-22note2</h1>
+
+    
+    <span class="article-date">2020-12-23</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="画图" class="section level1">
+<h1>画图</h1>
+<p>##基础画图</p>
+<pre class="r"><code>aq &lt;- read.csv(&#39;D:/studyr/workpath/Rtraining/aq.csv&#39;)
+plot(aq$Temp)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>plot(x=aq$Temp,y=aq$Ozone)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code>plot(x=aq$Temp,y=aq$Ozone,pch=16,col=&#39;blue&#39;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<pre class="r"><code>#library(beginr)
+#plotpch(3)#查询标记
+#colors()#查询颜色</code></pre>
+<div id="循环及判断" class="section level2">
+<h2>循环及判断</h2>
+<pre class="r"><code>x&lt;-1
+if(x&gt;0){
+  print(&quot;positive&quot;)
+}else{
+  print(&quot;zero or negative&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;positive&quot;</code></pre>
+<pre class="r"><code>x1 &lt;- ifelse(x&gt;0, &quot;positive&quot;,&quot;zero or negative&quot;)
+
+plot(x=aq$Temp,y=aq$Ozone,type=&quot;l&quot;, #type选点还是线各种
+     pch = ifelse(aq$Temp &lt; 70,8,3),
+     xlim=c(50,100),ylim=c(30,50),
+     xlab=&quot;tem&quot;,ylab=&quot;ozone&quot;,
+     col = ifelse(aq$ozone &gt; 100, &quot;red&quot;,&quot;blue&quot;),
+     cex = ifelse(aq$Solar.R&gt;200,2,1))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="练习2" class="section level2">
+<h2>练习2</h2>
+<pre class="r"><code>zs &lt;- read.csv(&quot;D:/studyr/workpath/Rtraining/zs1.csv&quot;)
+plot(x =zs$x,y=zs$y1,type=&quot;l&quot;,col=&quot;red&quot;,
+     xlab = &quot;Date&quot;, 
+     ylab = &quot;Concentration&quot;,
+     ylim = c(120,160))
+lines(x =zs$x,y=zs$y2,type=&quot;l&quot;,col=&quot;blue&quot;,
+      ylim = c(120,160))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>#polygon(c(zs$x[1:100],zs$x[100:1]),c(zs))</code></pre>
+</div>
+<div id="多边形涂色" class="section level2">
+<h2>多边形涂色</h2>
+<pre class="r"><code>y &lt;- read.csv(&quot;D:/studyr/workpath/Rtraining/zs1.csv&quot;)
+
+y_green &lt;- c(0, apply(y[, 2:3], 1, max), 0)#0是让线的起点到原点位置
+y_pink &lt;- c(0, y$y2, 0)
+y_white &lt;- c(0, apply(y[, 2:3], 1, min), 0)
+x &lt;- c(y$x[1], y$x, y$x[nrow(y)])
+
+plot(y$x, y$y2, type=&quot;n&quot;, ylim = c(120, 160), xlab = &quot;x&quot;, ylab = &quot;y&quot;)
+polygon(x = x, y = y_green, col = &quot;lightgreen&quot;, border = NA)
+polygon(x = x, y = y_pink, col = &quot;pink&quot;, border = NA)
+polygon(x = x, y = y_white, col = &quot;white&quot;, border = NA)
+lines(y$x, y$y2)
+lines(y$x, y$y1, lty = 2, col=&quot;blue1&quot;)
+box()#加边框</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="箱式图及直方图" class="section level2">
+<h2>箱式图及直方图</h2>
+<pre class="r"><code>#箱式图
+boxplot(aq$Ozone ~ aq$Month,horizontal = TRUE,col=&quot;pink&quot;,outline=FALSE)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>#直方图
+hist(aq$Ozone,freq = FALSE)
+lines(density(na.omit(aq$Ozone)))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+</div>
+<div id="拼图" class="section level2">
+<h2>拼图</h2>
+<pre class="r"><code>plot(aq$Temp,aq$Ozone,pch=16,col=&quot;blue&quot;,ylim=c(0,200),
+     xlab=&quot;&quot;,ylab=&quot;&quot;,axes=FALSE)
+axis(1)
+axis(2)
+
+par(new=TRUE)
+
+par(mfrow=c(3,2))#margin调边距
+for(i in 2:5){
+  plot(aq$Temp,aq[,i])
+}</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>layout(mat=matrix(c(1,1,2,3,4,4),nrow=2),widths = c(1,2,3),heights = c(1,2))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<pre class="r"><code>layout.show(4)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<pre class="r"><code>for(i in 2:5){
+  plot(aq$Temp,aq[,i])
+}</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-6-4.png" width="672" /></p>
+<pre class="r"><code>par(mfrow=c(2,1))#进行分画布画图
+dev.off()#终止分割图</code></pre>
+<pre><code>## null device 
+##           1</code></pre>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
